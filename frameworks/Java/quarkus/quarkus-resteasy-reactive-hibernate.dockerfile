@@ -19,7 +19,7 @@ WORKDIR /quarkus/$MODULE
 RUN mvn package -q
 WORKDIR /quarkus
 
-FROM openjdk:11.0.6-jdk-slim
+FROM openjdk:16-jdk-oraclelinux8
 WORKDIR /quarkus
 ENV MODULE=resteasy-reactive-hibernate
 
