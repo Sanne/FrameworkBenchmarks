@@ -48,7 +48,7 @@ public class DbResource {
     }
 
     @GET
-    @Path( "/createdata" )
+    @Path( "/createData" )
     public String createData() {
         worldRepository.createData();
         return "OK";
