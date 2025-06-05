@@ -59,9 +59,8 @@ public class WorldRepository {
         //We're again forced to use the "individual load" pattern by the rules:
         final World[] list = loadNWorlds(count);
         final LocalRandom random = Randomizer.current();
-        try (Session s = sf.openSession()) {
+        try (StatelessSession s = sf.openStatelessSession()) {
             s.setJdbcBatchSize(count);
-            s.setHibernateFlushMode(FlushMode.MANUAL);
             for (World w : list) {
                 //Read the one field, as required by the following rule:
                 // # vi. At least the randomNumber field must be read from the database result set.
@@ -71,7 +70,6 @@ public class WorldRepository {
                 w.setRandomNumber(random.getNextRandomExcluding(previousRead));
                 s.update(w);
             }
-            s.flush();
         }
         return list;
     }
