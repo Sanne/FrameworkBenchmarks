@@ -39,6 +39,7 @@ JAVA_OPTIONS="-server \
   -XX:+UseCompactObjectHeaders \
   --add-opens=java.base/java.nio=ALL-UNNAMED \
   --add-opens=java.base/jdk.internal.misc=ALL-UNNAMED \
+  --enable-native-access=ALL-UNNAMED \
   --sun-misc-unsafe-memory-access=allow \
   $@"
 
