@@ -39,6 +39,8 @@ JAVA_OPTIONS="-server \
   --add-opens=java.base/jdk.internal.misc=ALL-UNNAMED \
   --enable-native-access=ALL-UNNAMED \
   --sun-misc-unsafe-memory-access=allow \
+  -XX:+UnlockExperimentalVMOptions \
+  -XX:+UseCompactObjectHeaders \
   $@"
 
 java $JAVA_OPTIONS -jar quarkus-run.jar
