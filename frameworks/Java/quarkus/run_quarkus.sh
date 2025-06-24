@@ -33,6 +33,9 @@ JAVA_OPTIONS="-server \
   -Dio.quarkus.vertx.core.runtime.context.VertxContextSafetyToggle.I_HAVE_CHECKED_EVERYTHING=true \
   -Djboss.threads.eqe.statistics=false \
   -Dmutiny.disableCallBackDecorators=true \
+  -XX:+AlwaysPreTouch \
+  -XX:+UnlockExperimentalVMOptions \
+  -XX:+UseCompactObjectHeader \
   $@"
 
 java $JAVA_OPTIONS -jar quarkus-run.jar
