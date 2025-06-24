@@ -16,6 +16,7 @@ JAVA_OPTIONS="-server \
   -Dquarkus.http.accept-backlog=-1 \
   -Dio.netty.buffer.checkBounds=false \
   -Dio.netty.buffer.checkAccessible=false \
+  -Dio.netty.tryReflectionSetAccessible=true \
   -Djava.util.logging.manager=org.jboss.logmanager.LogManager \
   -Dquarkus.http.idle-timeout=0 \
   -XX:+UseNUMA \
@@ -36,6 +37,9 @@ JAVA_OPTIONS="-server \
   -XX:+AlwaysPreTouch \
   -XX:+UnlockExperimentalVMOptions \
   -XX:+UseCompactObjectHeaders \
+  --add-opens=java.base/java.nio=ALL-UNNAMED \
+  --add-opens=java.base/jdk.internal.misc=ALL-UNNAMED \
+  --sun-misc-unsafe-memory-access=allow \
   $@"
 
 java $JAVA_OPTIONS -jar quarkus-run.jar
